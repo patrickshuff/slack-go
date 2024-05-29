@@ -704,6 +704,14 @@ func MsgOptionLinkNames(linkName bool) MsgOption {
 	}
 }
 
+// MsgOptionIncludeAllMetadata sets include_all_metadata option
+func MsgOptionIncludeAllMetadata(includeAllMetadata bool) MsgOption {
+	return func(config *sendConfig) error {
+		config.values.Set("include_all_metadata", strconv.FormatBool(includeAllMetadata))
+		return nil
+	}
+}
+
 // UnsafeMsgOptionEndpoint deliver the message to the specified endpoint.
 // NOTE: USE AT YOUR OWN RISK: No issues relating to the use of this Option
 // will be supported by the library, it is subject to change without notice that

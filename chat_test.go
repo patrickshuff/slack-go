@@ -207,6 +207,28 @@ func TestPostMessage(t *testing.T) {
 				"link_names": []string{"false"},
 			},
 		},
+		"IncludeAllMetadata false": {
+			endpoint: "/chat.postMessage",
+			opt: []MsgOption{
+				MsgOptionIncludeAllMetadata(false),
+			},
+			expected: url.Values{
+				"channel":              []string{"CXXX"},
+				"token":                []string{"testing-token"},
+				"include_all_metadata": []string{"false"},
+			},
+		},
+		"IncludeAllMetadata true": {
+			endpoint: "/chat.postMessage",
+			opt: []MsgOption{
+				MsgOptionIncludeAllMetadata(true),
+			},
+			expected: url.Values{
+				"channel":              []string{"CXXX"},
+				"token":                []string{"testing-token"},
+				"include_all_metadata": []string{"true"},
+			},
+		},
 	}
 
 	once.Do(startServer)
